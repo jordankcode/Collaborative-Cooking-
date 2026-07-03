@@ -22,7 +22,7 @@ public class NPCwalktocounter : MonoBehaviour
 
     void Update()
     {
-        bool isMoving = agent.velocity.magnitude > 0.1f;
+        bool isMoving = agent.velocity.magnitude > 0.01f;
         animator.SetBool("IsWalking", isMoving);
     }
 

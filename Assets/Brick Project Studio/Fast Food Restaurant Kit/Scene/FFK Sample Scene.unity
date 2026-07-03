@@ -1182,19 +1182,14 @@ Animator:
   m_GameObject: {fileID: 37428109}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8242b18fc7252af44a453bcfefda7e7c, type: 3}
-  m_Controller: {fileID: 9100000, guid: 24e3fc9eb59b66d4399d6c55e35d2d50, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3237903931f80624780c4ebfd2f9a86c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'metarig'\n\tTransform 'shoulder.R'\n\tTransform
-    'thigh.L'\n\tTransform 'upper_arm.L'\n\tTransform 'shin.R'\n\tTransform 'metarig'\n\tTransform
-    'spine.001'\n\tTransform 'upper_arm.R'\n\tTransform 'hand.R'\n\tTransform 'foot.L'\n\tand
-    more ...\n\tFrom animation clip 'mixamo.com'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1218,7 +1213,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &37428112
@@ -1257,7 +1252,7 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 1.43, z: 0}
+  m_Center: {x: 0, y: 2.37, z: 0}
 --- !u!4 &37950472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1954185702199389827, guid: e0f2df96b7a2b1b4eb0445c0a3be5515, type: 3}
