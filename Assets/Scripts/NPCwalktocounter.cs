@@ -1,43 +1,62 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCwalktocounter : MonoBehaviour
+public class NPCWalkToCounter : MonoBehaviour
 {
     public Transform pointA;
     public Transform pointB;
 
     private NavMeshAgent agent;
     private Animator animator;
-    private Transform currentTarget;
+    private bool atPointA = true;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-       
-        currentTarget = pointA;
-        agent.SetDestination(pointA.position);
+        if (pointA != null)
+            agent.SetDestination(pointA.position);
     }
 
     void Update()
     {
-        bool isMoving = agent.velocity.magnitude > 0.01f;
-        animator.SetBool("IsWalking", isMoving);
+        if (agent != null)
+        {
+            bool isMoving = agent.velocity.magnitude > 0.1f;
+            animator.SetBool("IsWalking", isMoving);
+        }
     }
 
-    void OnMouseDown()
+    public void Toggle()
     {
-       
-        if (currentTarget == pointA)
+        NavMeshHit navHit;
+
+        if (atPointA)
         {
-            currentTarget = pointB;
-            agent.SetDestination(pointB.position);
+            if (NavMesh.SamplePosition(pointB.position, out navHit, 2.0f, NavMesh.AllAreas))
+            {
+                agent.SetDestination(navHit.position);
+                atPointA = false;
+                Debug.Log("Moving to Point B");
+            }
+            else
+            {
+                Debug.Log("Point B not on NavMesh");
+            }
         }
         else
         {
-            currentTarget = pointA;
-            agent.SetDestination(pointA.position);
+            if (NavMesh.SamplePosition(pointA.position, out navHit, 2.0f, NavMesh.AllAreas))
+            {
+                agent.SetDestination(navHit.position);
+                atPointA = true;
+                Debug.Log("Moving to Point A");
+            }
+            else
+            {
+                Debug.Log("Point A not on NavMesh");
+            }
         }
     }
 }
