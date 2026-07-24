@@ -14,8 +14,6 @@ public class NPCwalktocounter : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
-       
         currentTarget = pointA;
         agent.SetDestination(pointA.position);
     }
@@ -26,9 +24,8 @@ public class NPCwalktocounter : MonoBehaviour
         animator.SetBool("IsWalking", isMoving);
     }
 
-    void OnMouseDown()
+    public void Toggle()
     {
-       
         if (currentTarget == pointA)
         {
             currentTarget = pointB;
