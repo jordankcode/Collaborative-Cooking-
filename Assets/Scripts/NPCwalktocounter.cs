@@ -30,11 +30,13 @@ public class NPCwalktocounter : MonoBehaviour
         {
             currentTarget = pointB;
             agent.SetDestination(pointB.position);
+            ObjectiveManager.instance.ShowObjective("Order: Make a Pepperoni Pizza!");
         }
         else
         {
             currentTarget = pointA;
             agent.SetDestination(pointA.position);
+            ObjectiveManager.instance.HideObjective();
         }
     }
 }
