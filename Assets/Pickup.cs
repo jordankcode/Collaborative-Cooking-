@@ -4,6 +4,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     bool isHolding = false;
+    public bool IsHolding => isHolding; // lets other scripts check if this is being held
 
     [SerializeField]
     float throwForce = 600f;
