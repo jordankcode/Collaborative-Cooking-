@@ -34,9 +34,9 @@ public class NPCwalktocounter : MonoBehaviour
     {
         if (isSitting) return;
 
-        if (ObjectiveManager.instance == null)
+        if (ObjectiveManager1.instance == null)
         {
-            Debug.Log("ObjectiveManager not found in scene");
+            Debug.Log("ObjectiveManager1 not found in scene");
             return;
         }
 
@@ -47,7 +47,7 @@ public class NPCwalktocounter : MonoBehaviour
             animator.SetBool("IsSitting", false);
             animator.SetBool("IsWalking", true);
             agent.SetDestination(pointB.position);
-            ObjectiveManager.instance.ShowObjective("Order: Make a Pepperoni Pizza!");
+            ObjectiveManager1.instance.ShowObjective("Order: Make a Pepperoni Pizza!");
             StartCoroutine(WaitUntilArrived(pointB.position, OnArriveAtChair));
         }
         else
@@ -57,7 +57,7 @@ public class NPCwalktocounter : MonoBehaviour
             animator.SetBool("IsSitting", false);
             animator.SetBool("IsWalking", true);
             agent.SetDestination(pointA.position);
-            ObjectiveManager.instance.HideObjective();
+            ObjectiveManager1.instance.HideObjective();
         }
     }
 
