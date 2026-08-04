@@ -34,22 +34,28 @@ public class NPCwalktocounter : MonoBehaviour
     {
         if (isSitting) return;
 
+        if (ObjectiveManager.instance == null)
+        {
+            Debug.Log("ObjectiveManager not found in scene");
+            return;
+        }
+
         if (atPointA)
         {
             atPointA = false;
             agent.enabled = true;
             animator.SetBool("IsSitting", false);
-            animator.SetBool("IsWalking", true); // force it on immediately
+            animator.SetBool("IsWalking", true);
             agent.SetDestination(pointB.position);
             ObjectiveManager.instance.ShowObjective("Order: Make a Pepperoni Pizza!");
-            StartCoroutine(WaitUntilArrived(pointB.position, OnArriveAtCounter));
+            StartCoroutine(WaitUntilArrived(pointB.position, OnArriveAtChair));
         }
         else
         {
             atPointA = true;
             agent.enabled = true;
             animator.SetBool("IsSitting", false);
-            animator.SetBool("IsWalking", true); // force it on immediately
+            animator.SetBool("IsWalking", true);
             agent.SetDestination(pointA.position);
             ObjectiveManager.instance.HideObjective();
         }
@@ -57,11 +63,9 @@ public class NPCwalktocounter : MonoBehaviour
 
     IEnumerator WaitUntilArrived(Vector3 destination, System.Action onArrived)
     {
-        // Wait for path to start calculating
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
-        // Wait until agent is close enough
-        while (agent.enabled && agent.remainingDistance > agent.stoppingDistance + 0.1f)
+        while (Vector3.Distance(transform.position, destination) > 1f)
         {
             yield return null;
         }
@@ -69,30 +73,9 @@ public class NPCwalktocounter : MonoBehaviour
         onArrived?.Invoke();
     }
 
-    void OnArriveAtCounter()
+    void OnArriveAtChair()
     {
         isSitting = true;
         agent.enabled = false;
-
-        // Snap to sit position
-        if (chairSitPoint != null)
-        {
-            transform.position = chairSitPoint.position;
-            transform.rotation = chairSitPoint.rotation;
-        }
-
-        animator.SetBool("IsWalking", false);
-        animator.SetBool("IsSitting", true);
-        Debug.Log("NPC arrived and sitting");
-    }
-
-    public void StandUp()
-    {
-        isSitting = false;
-        animator.SetBool("IsSitting", false);
-        agent.enabled = true;
-        atPointA = true;
-        agent.SetDestination(pointA.position);
-        ObjectiveManager.instance.HideObjective();
     }
 }
