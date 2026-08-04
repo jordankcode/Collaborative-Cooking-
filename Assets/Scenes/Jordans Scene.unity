@@ -3664,7 +3664,7 @@ Transform:
   m_GameObject: {fileID: 162019003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.091, y: 1.21, z: 13.27}
+  m_LocalPosition: {x: 7.75, y: 1.21, z: 12.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37813,6 +37813,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7144324569869185615, guid: 4bb2a81fa1ac56b4a9a5c0aee917bd48, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8642204973143744079, guid: 4bb2a81fa1ac56b4a9a5c0aee917bd48, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -41856,8 +41864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b844e3e13fcc35c459697118117de9af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectiveManager
-  objectivePanel: {fileID: 0}
-  objectiveText: {fileID: 0}
 --- !u!114 &1854310587
 MonoBehaviour:
   m_ObjectHideFlags: 0
