@@ -4165,6 +4165,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 175413605}
+    - targetCorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 175413610}
   m_SourcePrefab: {fileID: 100100000, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
 --- !u!1 &175413604 stripped
 GameObject:
@@ -4253,6 +4256,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &175413610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175413604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf03cc35fac1ca4492c082b9f7f41e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectiveManager1
+  objectivePanel: {fileID: 225312542}
+  objectiveText: {fileID: 1787547376}
 --- !u!1001 &176631051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41942,8 +41959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68c233036cdfa7458f570c16120b047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectiveManager
-  objectivePanel: {fileID: 225312542}
-  objectiveText: {fileID: 1787547376}
 --- !u!1001 &1856446957
 PrefabInstance:
   m_ObjectHideFlags: 0
