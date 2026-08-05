@@ -64,18 +64,52 @@ public class NPCwalktocounter : MonoBehaviour
     IEnumerator WaitUntilArrived(Vector3 destination, System.Action onArrived)
     {
         yield return new WaitForSeconds(0.8f);
+        Debug.Log("Checking distance to chair");
 
-        while (Vector3.Distance(transform.position, destination) > 1f)
+        while (Vector3.Distance(transform.position, destination) > 2f)
         {
-            yield return null;
+            Debug.Log("Current distance: " + Vector3.Distance(transform.position, destination));
+            yield return new WaitForSeconds(0.5f); // log every 0.5 seconds not every frame
         }
 
+        Debug.Log("Distance threshold reached - calling OnArriveAtChair");
         onArrived?.Invoke();
     }
 
     void OnArriveAtChair()
     {
+        Debug.Log("OnArriveAtChair fired");
         isSitting = true;
         agent.enabled = false;
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsSitting", true);
+        Debug.Log("Animator IsSitting = " + animator.GetBool("IsSitting"));
+        StartCoroutine(SnapToSitPosition());
+    }
+
+    IEnumerator SnapToSitPosition()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        if (chairSitPoint != null)
+        {
+            transform.position = chairSitPoint.position;
+            transform.rotation = chairSitPoint.rotation;
+            Debug.Log("Snapped to chair position");
+        }
+        else
+        {
+            Debug.Log("CHAIRSITPOINT IS NULL - assign it in Inspector");
+        }
+    }
+
+    public void StandUp()
+    {
+        isSitting = false;
+        animator.SetBool("IsSitting", false);
+        agent.enabled = true;
+        atPointA = true;
+        agent.SetDestination(pointA.position);
+        ObjectiveManager1.instance.HideObjective();
     }
 }
