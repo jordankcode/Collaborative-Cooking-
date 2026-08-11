@@ -112,4 +112,5 @@ public class NPCwalktocounter : MonoBehaviour
         agent.SetDestination(pointA.position);
         ObjectiveManager1.instance.HideObjective();
     }
+
 }
