@@ -27,7 +27,14 @@ public class ClickManager : MonoBehaviour
             NPCwalktocounter npc = hit.collider.GetComponentInParent<NPCwalktocounter>();
             if (npc != null)
             {
-                npc.Toggle();
+                if (npc.IsWaitingForOrder())
+                {
+                    npc.ReceivePizza(); // NPC is sitting waiting on an order — try to deliver
+                }
+                else
+                {
+                    npc.Toggle(); // otherwise, normal walk-to-counter / walk-back toggle
+                }
             }
         }
     }

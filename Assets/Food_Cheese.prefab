@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4748571675360104016}
   - component: {fileID: 3427680357295214074}
   - component: {fileID: 2826395590979872233}
+  - component: {fileID: 2067678853467016150}
+  - component: {fileID: 4052873267629818295}
   m_Layer: 0
   m_Name: Food_Cheese
   m_TagString: Untagged
@@ -163,3 +165,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.19643418, y: 0.118631296, z: 0.18300799}
   m_Center: {x: 0.011715412, y: 0.06000718, z: -0.00032519177}
+--- !u!114 &2067678853467016150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447097575811086771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c221368419d16545b130e455a9f1dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pickup
+  throwForce: 600
+  maxDistance: 3
+--- !u!114 &4052873267629818295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447097575811086771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93c98974aa4c5343864bf910c11153c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheeseStick
+  stickTime: 2

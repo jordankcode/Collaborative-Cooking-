@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: cookedpizza
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
+      propertyPath: m_TagString
+      value: Pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.981
@@ -52,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -65,10 +85,13 @@ PrefabInstance:
       addedObject: {fileID: 9037506034661196310}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4901541361472337581}
+      addedObject: {fileID: 3919313424612980899}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3919313424612980899}
+      addedObject: {fileID: 4095598932204906009}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4255974524347086907}
   m_SourcePrefab: {fileID: 100100000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}
 --- !u!1 &4591750906833364731 stripped
 GameObject:
@@ -102,8 +125,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4901541361472337581
-BoxCollider:
+--- !u!114 &3919313424612980899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591750906833364731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c221368419d16545b130e455a9f1dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pickup
+  throwForce: 600
+  maxDistance: 3
+--- !u!114 &4095598932204906009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591750906833364731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb93084a9a926e4290e6805acd69759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PizzaTopping
+  pepperoniCount: 0
+  cheeseCount: 0
+  sauceCount: 2
+  requiredPepperoni: 3
+  requiredCheese: 2
+  requiredSauce: 1
+  maxPepperoni: 5
+  maxCheese: 4
+  maxSauce: 2
+--- !u!64 &4255974524347086907
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,20 +178,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.38792807, y: 0.028901666, z: 0.38792807}
-  m_Center: {x: 0, y: 0.014542228, z: 0}
---- !u!114 &3919313424612980899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4591750906833364731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c221368419d16545b130e455a9f1dcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pickup
-  throwForce: 600
-  maxDistance: 3
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 72d80c016a719fe46ab722fc0ecc62f0, type: 3}

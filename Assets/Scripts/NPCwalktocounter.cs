@@ -7,6 +7,8 @@ public class NPCwalktocounter : MonoBehaviour
     public Transform pointA;
     public Transform pointB;
     public Transform chairSitPoint;
+    public Plate assignedPlate; // the plate on this NPC's table — drag it in the Inspector
+    public float eatingTime = 2f; // how long the NPC "eats" before standing up and walking off
 
     private NavMeshAgent agent;
     private Animator animator;
@@ -28,6 +30,50 @@ public class NPCwalktocounter : MonoBehaviour
                             && !agent.pathPending;
             animator.SetBool("IsWalking", isMoving);
         }
+    }
+
+    // lets ClickManager know whether a click should be treated as "deliver pizza" instead of "toggle walk"
+    public bool IsWaitingForOrder()
+    {
+        return isSitting;
+    }
+
+    // called by ClickManager when the player clicks this NPC while it's sitting and waiting on an order
+    public void ReceivePizza()
+    {
+        if (!isSitting) return;
+
+        if (assignedPlate == null)
+        {
+            Debug.Log("No plate assigned to this NPC in the Inspector!");
+            return;
+        }
+
+        if (!assignedPlate.HasPizza())
+        {
+            ObjectiveManager1.instance.ShowObjective("Bring me a pizza on the plate!");
+            return;
+        }
+
+        PizzaTopping topping = assignedPlate.pizzaTopping;
+
+        if (topping.IsPizzaAcceptable())
+        {
+            ObjectiveManager1.instance.ShowObjective("Order accepted! Thanks!");
+            Destroy(assignedPlate.pizzaOnPlate);
+            assignedPlate.ClearPlate();
+            StartCoroutine(FinishOrderAfterDelay(eatingTime));
+        }
+        else
+        {
+            ObjectiveManager1.instance.ShowObjective("Rejected: " + topping.GetRejectionReason());
+        }
+    }
+
+    IEnumerator FinishOrderAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StandUp();
     }
 
     public void Toggle()

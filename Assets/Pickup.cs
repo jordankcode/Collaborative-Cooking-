@@ -14,6 +14,7 @@ public class Pickup : MonoBehaviour
 
     TempParent tempParent;
     Rigidbody rb;
+    PizzaTopping pizzaTopping; // if this is on the actual pizza, we'll find this
 
     Vector3 objectPos;
 
@@ -23,6 +24,7 @@ public class Pickup : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         tempParent = TempParent.Instance;
+        pizzaTopping = GetComponent<PizzaTopping>(); // null if this isn't the pizza
     }
 
     // Update is called once per frame
@@ -46,6 +48,12 @@ public class Pickup : MonoBehaviour
                 rb.detectCollisions = true;
 
                 this.transform.SetParent(tempParent.transform);
+
+                // if this object is the pizza (has PizzaTopping), tell PizzaHolder we're carrying it
+                if (pizzaTopping != null && PizzaHolder.instance != null)
+                {
+                    PizzaHolder.instance.PickUpPizza(this.gameObject);
+                }
             }
         }
         else
@@ -92,6 +100,12 @@ public class Pickup : MonoBehaviour
             this.transform.position = objectPos;
             this.transform.SetParent(null);
             rb.useGravity = true;
+
+            // if this was the pizza, tell PizzaHolder we're not carrying it anymore
+            if (pizzaTopping != null && PizzaHolder.instance != null && PizzaHolder.instance.currentPizza == this.gameObject)
+            {
+                PizzaHolder.instance.DropPizza();
+            }
         }
 
     }

@@ -5,7 +5,7 @@ public class PizzaTopping : MonoBehaviour
     // Current topping counts
     public int pepperoniCount = 0;
     public int cheeseCount = 0;
-    public int sauceCount = 0;
+    public int sauceCount = 1;
 
     // Required amounts for the order
     public int requiredPepperoni = 3;
@@ -48,11 +48,7 @@ public class PizzaTopping : MonoBehaviour
             Debug.Log("Not enough cheese");
             return false;
         }
-        if (sauceCount < requiredSauce)
-        {
-            Debug.Log("Not enough sauce");
-            return false;
-        }
+
 
         // Check if there are too many toppings
         if (pepperoniCount > maxPepperoni)
@@ -65,11 +61,7 @@ public class PizzaTopping : MonoBehaviour
             Debug.Log("Too much cheese");
             return false;
         }
-        if (sauceCount > maxSauce)
-        {
-            Debug.Log("Too much sauce");
-            return false;
-        }
+
 
         return true;
     }
@@ -78,10 +70,10 @@ public class PizzaTopping : MonoBehaviour
     {
         if (pepperoniCount < requiredPepperoni) return "Not enough pepperoni!";
         if (cheeseCount < requiredCheese) return "Not enough cheese!";
-        if (sauceCount < requiredSauce) return "Not enough sauce!";
+
         if (pepperoniCount > maxPepperoni) return "Too much pepperoni!";
         if (cheeseCount > maxCheese) return "Too much cheese!";
-        if (sauceCount > maxSauce) return "Too much sauce!";
+
         return "Something is wrong with this pizza!";
     }
 }
